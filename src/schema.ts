@@ -22,12 +22,12 @@ type Query {
   }
 
   type Mutation {
-    addProduct(product: ProductInput): Product
-    addBrand(brand: BrandsInput): Brand
+    addProduct(input: ProductInput): ProductPayload
+    addBrand(input: BrandsInput): Brand
     deleteProduct(id: ID): Boolean
     deleteBrand(id: ID): Boolean
-    updateProduct(id: ID, product: ProductInput): Product
-    updateBrand(id: ID, brand: BrandsInput): Brand
+    updateProduct(id: ID, input: ProductInput): Product
+    updateBrand(id: ID, input: BrandsInput): Brand
   }
   input ProductInput {
     productname: String
@@ -37,5 +37,13 @@ type Query {
   input BrandsInput {
     name: String
     description: String
+  }
+  type ProductPayload{
+    error:[Error]
+    product:Product
+  }
+
+  type Error{
+    errormessage:String
   }
 `;

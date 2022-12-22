@@ -5,6 +5,7 @@ import { Query }  from "./resolvers/Query.js";
 import { typeDefs } from "./schema.js";
 import { Product } from "./resolvers/Product.js";
 import { Brand } from "./resolvers/Brand.js"
+import { Mutation } from "./resolvers/Mutation.js"
 
 const app = express();
 const server = new ApolloServer({
@@ -13,6 +14,7 @@ const server = new ApolloServer({
     Query,
     Brand,
     Product,
+    Mutation
   },
 });
 
