@@ -23,6 +23,17 @@ interface BrandArgs {
   description: string;
 }
 
+interface Brand {
+  name: string;
+  description: string;
+}
+interface BrandPayload {
+  error: {
+    errormessage: string;
+  }[];
+  brand: Brand | null;
+}
+
 export const Mutation = {
   addProduct: async (_: any, product: ProductArgs): Promise<ProductPayload> => {
     const { productname, price, brandId } = product;
@@ -37,13 +48,14 @@ export const Mutation = {
       };
     } else {
       console.log("111");
+      const newProduct = await Products.create({
+        productname,
+        price,
+        brandId,
+      });
       return {
         error: [],
-        product: await Products.create({
-          productname,
-          price,
-          brandId,
-        }),
+        product: newProduct,
       };
     }
   },
@@ -52,13 +64,27 @@ export const Mutation = {
     await Products.delete(id);
     return true;
   },
-  addBrand: async (_: any, brand: BrandArgs) => {
+  addBrand: async (_: any, brand: BrandArgs): Promise<BrandPayload> => {
     const { name, description } = brand;
+    if (name === null || description === null) {
+      return {
+        error: [
+          {
+            errormessage:
+              "you did not type in information of brand name and description",
+          },
+        ],
+        brand: null,
+      };
+    }
     const newBrand = await Brands.create({
       name,
       description,
     });
-    return newBrand;
+    return {
+      error: [],
+      brand: newBrand,
+    };
   },
   deleteBrand: async (_: any, { id }: { id: string }) => {
     const product = await Brands.findById(id);

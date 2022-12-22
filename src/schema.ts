@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-type Query {
+  type Query {
     brands: [Brand]
     brand(id: ID): Brand
     products: [Product]
@@ -22,12 +22,12 @@ type Query {
   }
 
   type Mutation {
-    addProduct(input: ProductInput): ProductPayload
-    addBrand(input: BrandsInput): Brand
-    deleteProduct(id: ID): Boolean
-    deleteBrand(id: ID): Boolean
-    updateProduct(id: ID, input: ProductInput): Product
-    updateBrand(id: ID, input: BrandsInput): Brand
+    addProduct(input: ProductInput!): ProductPayload
+    addBrand(input: BrandsInput!): BrandPayload
+    deleteProduct(id: ID!): Boolean
+    deleteBrand(id: ID!): Boolean
+    updateProduct(id: ID!, input: ProductInput!): ProductPayload
+    updateBrand(id: ID!, input: BrandsInput!): BrandPayload
   }
   input ProductInput {
     productname: String
@@ -38,12 +38,16 @@ type Query {
     name: String
     description: String
   }
-  type ProductPayload{
-    error:[Error]
-    product:Product
+  type ProductPayload {
+    error: [Error]
+    product: Product
   }
 
-  type Error{
-    errormessage:String
+  type Error {
+    errormessage: String
+  }
+  type BrandPayload {
+    error: [Error]
+    brand: Brand
   }
 `;
