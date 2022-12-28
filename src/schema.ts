@@ -22,12 +22,12 @@ export const typeDefs = gql`
   }
 
   type Mutation {
-    addProduct(input: ProductInput!): ProductPayload
-    addBrand(input: BrandsInput!): BrandPayload
+    addProduct(product: ProductInput!): ProductPayload
+    addBrand(brand: BrandsInput!): BrandPayload
     deleteProduct(id: ID!): Boolean
     deleteBrand(id: ID!): Boolean
-    updateProduct(id: ID!, input: ProductInput!): ProductPayload
-    updateBrand(id: ID!, input: BrandsInput!): BrandPayload
+    updateProduct(id: ID!, product: ProductInput!): ProductPayload
+    updateBrand(id: ID!, brand: BrandsInput!): BrandPayload
   }
   input ProductInput {
     productname: String
