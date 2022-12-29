@@ -1,14 +1,8 @@
 [
   {
-    "id": "1",
+    "id": "2",
     "productname": "12321",
     "price": "9988"
-  },
-  {
-    "id": "2",
-    "productname": "ULTRABOOST LOW TRAINERS",
-    "price": "1688",
-    "brandId": "wvdB54Gqbdp_NZTXK9Tue"
   },
   {
     "id": "3",
@@ -40,5 +34,10 @@
     "id": "gBg2wvyWlfk4vMH2ZuIBW",
     "productname": "abcd",
     "price": "111222"
+  },
+  {
+    "id": "x2R8O2n2_EYkLvlPd7AY8",
+    "productname": "23424",
+    "price": "56666"
   }
 ]

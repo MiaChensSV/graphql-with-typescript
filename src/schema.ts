@@ -35,8 +35,8 @@ export const typeDefs = gql`
     brandId: String
   }
   input BrandsInput {
-    name: String
-    description: String
+    name: String!
+    description: String!
   }
   type ProductPayload {
     error: [Error]
